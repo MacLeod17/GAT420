@@ -9,6 +9,7 @@ public class BasicAgent : MonoBehaviour
 
     public Perception perception;
     public Behavior behavior;
+    public WanderBehavior wanderBehavior;
 
     public Vector3 Velocity { get; set; }
     public Vector3 Acceleration { get; set; }
@@ -19,7 +20,8 @@ public class BasicAgent : MonoBehaviour
         Acceleration = Vector3.zero;
 
         GameObject[] gameObjects = perception.GetGameObjects();
-        Vector3 force = behavior.Execute(gameObjects);
+        //if no objects seen, wander. if objects seen, flee/seek
+        Vector3 force = (gameObjects.Length == 0) ? wanderBehavior.Execute(gameObjects) : behavior.Execute(gameObjects);
         Acceleration += force;
 
         Velocity += Acceleration * Time.deltaTime;
