@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WanderBehavior : Behavior
 {
-    [Range(0, 25)] public float displacement = 5;
+    [Range(0, 45)] public float displacement = 5;
     [Range(0, 5)] public float radius = 2;
     [Range(0, 5)] public float distance = 2;
     
@@ -23,6 +23,9 @@ public class WanderBehavior : Behavior
 
         Vector3 desired = direction * Agent.maxSpeed;
         force = Vector3.ClampMagnitude(desired - Agent.Velocity, Agent.maxForce);
+
+        Debug.DrawLine(transform.position, transform.position + forward, Color.yellow);
+        Debug.DrawLine(transform.position + forward, transform.position + forward + point, Color.yellow);
 
         Debug.DrawRay(transform.position, desired, Color.red); // desired
         Debug.DrawRay(transform.position + Agent.Velocity, force, Color.green); // steering
