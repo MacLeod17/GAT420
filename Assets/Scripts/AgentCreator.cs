@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AgentCreator : MonoBehaviour
 {
-    public BasicAgent[] agents;
+    public AutonomousAgent[] agents;
     public LayerMask layerMask;
 
     void Update()

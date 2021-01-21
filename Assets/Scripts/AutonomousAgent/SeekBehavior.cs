@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SeekBehavior : Behavior
 {
-    public override Vector3 Execute(GameObject[] gameObjects)
+    public override Vector3 Execute()
     {
         Vector3 force = Vector3.zero;
 
+        GameObject[] gameObjects = perception.GetGameObjects();
         if (gameObjects != null && gameObjects.Length > 0)
         {
             GameObject target = gameObjects[0]; // Nearest

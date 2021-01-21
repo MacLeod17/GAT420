@@ -10,10 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8439876691828266465}
   - component: {fileID: 8439876691828266466}
-  - component: {fileID: 8439876691828266469}
-  - component: {fileID: 8614336476747856672}
+  - component: {fileID: -7004934105471256403}
+  - component: {fileID: 6346304785247914167}
+  - component: {fileID: 6399389756609225682}
   - component: {fileID: 8439876691828266468}
   - component: {fileID: 8439876691828266467}
+  - component: {fileID: 8439876691828266469}
+  - component: {fileID: 1927062968911679816}
+  - component: {fileID: 8614336476747856672}
   - component: {fileID: 8439876691828266470}
   - component: {fileID: 8439876691828266464}
   - component: {fileID: 8439876691828266479}
@@ -52,12 +56,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47c8898a4a91144482d90554cf7aa4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  maxForce: 10
+  maxSpeed: 8
+  maxForce: 5
   perception: {fileID: 8439876691828266469}
-  behavior: {fileID: 8614336476747856672}
+  behaviors:
+  - {fileID: 8614336476747856672}
+  - {fileID: 6346304785247914167}
+  - {fileID: 1927062968911679816}
+  - {fileID: 8439876691828266467}
   wanderBehavior: {fileID: 8439876691828266470}
---- !u!114 &8439876691828266469
+--- !u!114 &-7004934105471256403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439876691828266477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c1d2a5599e6154e8327c0c9f28e4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 1
+  angle: 170
+  tagName: Agent1
+--- !u!114 &6346304785247914167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439876691828266477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e781365086255d546b13e66ca606373f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 2
+  perception: {fileID: -7004934105471256403}
+--- !u!114 &6399389756609225682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,20 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 10
-  angle: 160
-  tagName: Agent1
---- !u!114 &8614336476747856672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8439876691828266477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b6c294821dd874eb4508fedb776f81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  angle: 90
+  tagName: Player
 --- !u!114 &8439876691828266468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6659ab17940e85f44aa3fb105365982e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength: 1
+  perception: {fileID: 6399389756609225682}
 --- !u!114 &8439876691828266467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +135,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ed4b575d1947240946a370389c5671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength: 2
+  perception: {fileID: 6399389756609225682}
+--- !u!114 &8439876691828266469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439876691828266477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c1d2a5599e6154e8327c0c9f28e4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 5
+  angle: 120
+  tagName: Agent1
+--- !u!114 &1927062968911679816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439876691828266477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9278bdc668820d41b994c260300f877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1
+  perception: {fileID: 8439876691828266469}
+--- !u!114 &8614336476747856672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439876691828266477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b6c294821dd874eb4508fedb776f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1
+  perception: {fileID: 8439876691828266469}
 --- !u!114 &8439876691828266470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a9f0131c3bd074dbf1783bc9d68e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength: 1
+  perception: {fileID: 8439876691828266469}
   displacement: 5
   radius: 2
   distance: 2
