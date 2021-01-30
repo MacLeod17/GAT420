@@ -32,6 +32,8 @@ public class GraphNode : SearchNode
     public eType Type { get; set; } = eType.Default;
     public GraphNode Parent { get; set; } = null;
     public bool Visited { get; set; } = false;
+    public float Cost { get; set; } = float.MaxValue;
+    public float Heuristic { get; set; } = 0;
 
     void Update()
     {
@@ -120,6 +122,8 @@ public class GraphNode : SearchNode
         foreach (GraphNode graphNode in graphNodes)
         {
             graphNode.Visited = false;
+            graphNode.Parent = null;
+            graphNode.Cost = float.MaxValue;
         }
     }
 }
