@@ -11,7 +11,13 @@ public class IdleState : State
 
     public override void Execute(Agent owner)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        SearchPath searchPath = owner.GetComponent<SearchPath>();
+        searchPath.Move(owner.movement);
+
+        GameObject[] gameObjects = owner.perception.GetGameObjects();
+        GameObject player = Perception.GetGameObjectFromTag(gameObjects, "Player");
+
+        if (player != null)
         {
             ((StateAgent)owner).StateMachine.SetState("AttackState");
         }
