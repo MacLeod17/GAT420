@@ -14,6 +14,7 @@ public class StateAgent : Agent
 
     void Update()
     {
+        animator.SetFloat("Speed", movement.Velocity.magnitude);
         StateMachine.Execute();
     }
 }
