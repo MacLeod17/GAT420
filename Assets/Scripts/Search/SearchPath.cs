@@ -9,7 +9,7 @@ public class SearchPath : MonoBehaviour
 
     void Start()
     {
-        Node = initialNode;        
+        Node = (initialNode == null) ? SearchNode.GetRandomSearchNode() : initialNode;       
     }
 
     public void Move(Movement movement)

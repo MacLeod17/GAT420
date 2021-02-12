@@ -6,6 +6,7 @@ public abstract class Movement : MonoBehaviour
 {
     public float speedMax = 2;
     public float accelerationMax = 2;
+    public float turnRate = 90;
     public bool orientToMovement = true; 
 
     public virtual Vector3 Velocity { get; set; }

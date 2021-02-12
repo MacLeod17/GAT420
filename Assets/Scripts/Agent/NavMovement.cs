@@ -22,7 +22,7 @@ public class NavMovement : Movement
     void Update()
     {
         navMeshAgent.speed = speedMax;
-        navMeshAgent.angularSpeed = 90;
+        navMeshAgent.angularSpeed = turnRate;
     }
 
     public override void ApplyForce(Vector3 force)
