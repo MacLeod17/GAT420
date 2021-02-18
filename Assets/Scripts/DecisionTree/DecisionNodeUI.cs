@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DecisionNodeUI : MonoBehaviour
 {
+    public TMP_Text descriptionText;
+
     public Image nodeImage;
     public Image trueImage;
     public Image falseImage;
@@ -13,6 +16,11 @@ public class DecisionNodeUI : MonoBehaviour
     public Color inactiveColor;
 
     public DecisionNode decisionNode;
+
+    private void OnValidate()
+    {
+        descriptionText.text = name;
+    }
 
     void LateUpdate()
     {

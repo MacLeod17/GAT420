@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntCondition : Condition
+public class FloatCondition : Condition
 {
     public enum eCompare
     {
@@ -22,12 +22,12 @@ public class IntCondition : Condition
         }
     }
 
-    public int value { get; set; }
+    public float value { get; set; }
     public string valueString
     {
         set
         {
-            int.TryParse(value, out int v);
+            float.TryParse(value, out float v);
             this.value = v;
         }
     }
@@ -40,19 +40,19 @@ public class IntCondition : Condition
         switch (Compare)
         {
             case eCompare.Equal:
-                isTrue = ((int)parameter == value);
+                isTrue = (parameter == value);
                 break;
             case eCompare.Greater:
-                isTrue = ((int)parameter > value);
+                isTrue = (parameter > value);
                 break;
             case eCompare.Greater_Equal:
-                isTrue = ((int)parameter >= value);
+                isTrue = (parameter >= value);
                 break;
             case eCompare.Less:
-                isTrue = ((int)parameter < value);
+                isTrue = (parameter < value);
                 break;
             case eCompare.Less_Equal:
-                isTrue = ((int)parameter <= value);
+                isTrue = (parameter <= value);
                 break;
             default:
                 break;

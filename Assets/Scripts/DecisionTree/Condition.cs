@@ -4,5 +4,7 @@ using UnityEngine;
 
 public abstract class Condition : MonoBehaviour
 {
+    protected int prevFrame = -1;
+
     public abstract bool IsTrue();
 }
