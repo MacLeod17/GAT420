@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1718950061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1718950062}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1718950062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718950061}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7258565812868381248}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9113344408623391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,9 +2465,12 @@ GameObject:
   - component: {fileID: 7258565812868381248}
   - component: {fileID: 3628696177801535546}
   - component: {fileID: 957220666501267718}
-  - component: {fileID: 5012166599416474483}
   - component: {fileID: 3769271072177248631}
+  - component: {fileID: 5121838534638973307}
+  - component: {fileID: 5012166599416474483}
   - component: {fileID: 6816179025631468472}
+  - component: {fileID: 4058290855100296089}
+  - component: {fileID: 239977215}
   m_Layer: 0
   m_Name: UtilityAgent
   m_TagString: Untagged
@@ -2463,6 +2496,7 @@ Transform:
   - {fileID: 8977419981921945674}
   - {fileID: 3247119764581274102}
   - {fileID: 2948672390271212244}
+  - {fileID: 1718950062}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2500,22 +2534,6 @@ MonoBehaviour:
   perception: {fileID: 0}
   movement: {fileID: 5012166599416474483}
   animator: {fileID: 3628696177801535546}
---- !u!114 &5012166599416474483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8066029991590109434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e215a4e08ee0f419e057e6391fb96b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedMax: 2
-  accelerationMax: 2
-  turnRate: 1080
-  orientToMovement: 1
 --- !u!114 &3769271072177248631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2529,6 +2547,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 957220666501267718}
+--- !u!114 &5121838534638973307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066029991590109434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014ebaf575e1165488a127cc91c15761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalUI: {fileID: 3541456821917347979, guid: bc937c9d2a1d5da40868f8e843bb9bc9, type: 3}
+  goalUIParent: {fileID: 0}
+--- !u!114 &5012166599416474483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066029991590109434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e215a4e08ee0f419e057e6391fb96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMax: 3
+  accelerationMax: 3
+  turnRate: 1080
+  orientToMovement: 1
 --- !u!195 &6816179025631468472
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2538,7 +2586,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8066029991590109434}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2547,10 +2595,97 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.8
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4058290855100296089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066029991590109434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8596bee7bde33d498fad710763a124b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Hunger
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0.9944762
+      inSlope: -1.4739667
+      outSlope: -1.4739667
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.10769352
+    - serializedVersion: 3
+      time: -0.36524153
+      value: 0.29507166
+      inSlope: -0.31846255
+      outSlope: -0.31846255
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.103259385
+    - serializedVersion: 3
+      time: 1
+      value: 0.0000029206276
+      inSlope: -0.05807705
+      outSlope: -0.05807705
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.13616611
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  input: 1
+  decay: 0.1
+--- !u!114 &239977215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066029991590109434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8596bee7bde33d498fad710763a124b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Energy
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0.7999878
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.0103676915
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  input: 1
+  decay: 0.1
 --- !u!1 &8188761405216680518
 GameObject:
   m_ObjectHideFlags: 0
