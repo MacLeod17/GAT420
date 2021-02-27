@@ -13,7 +13,17 @@ public class UtilityAgentController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
-                agent.movement.MoveTowards(raycastHit.point);
+                UtilityObject utilityObject = raycastHit.collider.gameObject.GetComponent<UtilityObject>();
+
+                if (utilityObject != null)
+                {
+                    Debug.Log(utilityObject.id);
+                    agent.StartUtilityObject(utilityObject);
+                }
+                else
+                {
+                    agent.movement.MoveTowards(raycastHit.point);
+                }
             }
         }
     }
