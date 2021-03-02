@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class UtilityAgent : Agent
 {
@@ -12,7 +13,25 @@ public class UtilityAgent : Agent
         ActionComplete
     }
 
-    eState state = eState.Idle;
+    [Range(0, 1)] public float utilityThreshold = 0.25f;
+    public bool utilityAI = true;
+
+    public float Happiness 
+    { 
+        get
+        {
+            float utility = 0;
+            foreach (var goal in goals)
+            {
+                utility += goal.Utility;
+            }
+
+            return utility / goals.Length;
+        }
+    }
+
+    public eState state { get; set; } = eState.Idle;
+
     UtilityAgentGoal[] goals;
     UtilityObject utilityObject;
 
@@ -28,6 +47,16 @@ public class UtilityAgent : Agent
         switch (state)
         {
             case eState.Idle:
+                if (utilityAI)
+                {
+                    UtilityObject[] utilityObjects = FindObjectsOfType<UtilityObject>();
+                    utilityObject = GetMaxScoreUtilityObject(utilityObjects);
+                    if (utilityObject != null)
+                    {
+                        StartUtilityObject(utilityObject);
+                    }
+                }
+
                 break;
             case eState.ActionStart:
                 StartCoroutine(ExecuteUtilityObject(utilityObject));
@@ -55,6 +84,23 @@ public class UtilityAgent : Agent
             yield return null;
         }
 
+        // Move to Action Location
+        GetComponent<NavMeshAgent>().enabled = false;
+        if (utilityObject.actionLocation != null)
+        {
+            float time = 1;
+            float timer = 0;
+            Transform start = transform;
+
+            while (timer < time)
+            {
+                timer += Time.deltaTime;
+                timer = Mathf.Min(timer, time);
+                Utilities.Lerp(start, utilityObject.actionLocation, transform, timer / time);
+                yield return null;
+            }
+        }
+
         // Perform UtilityObject action
         animator.SetTrigger(utilityObject.animationID);
         utilityObject.actionEffects.SetActive(true);
@@ -63,6 +109,7 @@ public class UtilityAgent : Agent
         yield return new WaitForSeconds(utilityObject.duration);
 
         // Return to Idle
+        GetComponent<NavMeshAgent>().enabled = true;
         animator.SetTrigger("Idle");
         utilityObject.actionEffects.SetActive(false);
 
@@ -90,5 +137,39 @@ public class UtilityAgent : Agent
             float score = utilityObject.GetScore(goal.id);
             goal.input += score;
         }
+    }
+
+    UtilityObject GetMaxScoreUtilityObject(UtilityObject[] utilityObjects)
+    {
+        UtilityObject maxUtilityObject = null;
+
+        // Find goal with highest need
+        float maxUtility = 0;
+        UtilityAgentGoal maxGoal = null;
+        foreach (var goal in goals)
+        {
+            if (goal.Utility > maxUtility)
+            {
+                maxUtility = goal.Utility;
+                maxGoal = goal;
+            }
+        }
+
+        // 
+        if (maxUtility > utilityThreshold)
+        {
+            float maxScore = 0;
+            foreach (var utilityObject in utilityObjects)
+            {
+                float score = utilityObject.GetScore(maxGoal.id);
+                if (score > maxScore)
+                {
+                    maxScore = score;
+                    maxUtilityObject = utilityObject;
+                }
+            }
+        }
+
+        return maxUtilityObject;
     }
 }

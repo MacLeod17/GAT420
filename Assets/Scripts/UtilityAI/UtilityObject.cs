@@ -8,6 +8,7 @@ public class UtilityObject : MonoBehaviour
     public string animationID;
     public float duration;
     public Transform location;
+    public Transform actionLocation;
     public GameObject actionEffects;
 
     public UtilityScore[] scores { get; set; }

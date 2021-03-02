@@ -24,4 +24,10 @@ public static class Utilities
     {
         return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
     }
+
+    public static void Lerp(Transform start, Transform end, Transform result, float t)
+    {
+        result.position = Vector3.Lerp(start.position, end.position, t);
+        result.rotation = Quaternion.Lerp(start.rotation, end.rotation, t);
+    }
 }

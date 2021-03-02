@@ -15,7 +15,7 @@ public class UtilityAgentController : MonoBehaviour
             {
                 UtilityObject utilityObject = raycastHit.collider.gameObject.GetComponent<UtilityObject>();
 
-                if (utilityObject != null)
+                if (utilityObject != null && agent.utilityAI == false)
                 {
                     Debug.Log(utilityObject.id);
                     agent.StartUtilityObject(utilityObject);
