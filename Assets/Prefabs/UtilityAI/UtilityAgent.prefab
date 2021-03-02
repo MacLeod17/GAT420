@@ -2471,6 +2471,9 @@ GameObject:
   - component: {fileID: 6816179025631468472}
   - component: {fileID: 4058290855100296089}
   - component: {fileID: 239977215}
+  - component: {fileID: 7147531858827894810}
+  - component: {fileID: 7147531858827894811}
+  - component: {fileID: 7147531858827894812}
   m_Layer: 0
   m_Name: UtilityAgent
   m_TagString: Untagged
@@ -2680,6 +2683,132 @@ MonoBehaviour:
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  input: 1
+  decay: 0.1
+--- !u!114 &7147531858827894810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066029991590109434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8596bee7bde33d498fad710763a124b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Hygiene
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0.50000113
+      inSlope: -0.24999711
+      outSlope: -0.24999711
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.000006914139
+      inSlope: -0.24999711
+      outSlope: -0.24999711
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  input: 1
+  decay: 0.1
+--- !u!114 &7147531858827894811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066029991590109434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8596bee7bde33d498fad710763a124b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Fun
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0.5200442
+      inSlope: -0.90692157
+      outSlope: -0.90692157
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.16061538
+    - serializedVersion: 3
+      time: -0
+      value: 0.05749156
+      inSlope: 0.0055603893
+      outSlope: 0.0055603893
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.22106352
+    - serializedVersion: 3
+      time: 1
+      value: 0.5023715
+      inSlope: 1.2246785
+      outSlope: 1.2246785
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1318931
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  input: 1
+  decay: 0.1
+--- !u!114 &7147531858827894812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066029991590109434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8596bee7bde33d498fad710763a124b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Bladder
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0.60512155
+      inSlope: -1.0720967
+      outSlope: -1.0720967
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.054529607
+    - serializedVersion: 3
+      time: 1
+      value: 0.0103676915
+      inSlope: -0.008645888
+      outSlope: -0.008645888
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07854444
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
